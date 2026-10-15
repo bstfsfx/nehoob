@@ -16,3 +16,4 @@ Thumbs.db
 # Dependencies and logs (no package.json in this project, but harmless)
 node_modules/
 *.log
+.vercel
