@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbefed">
+<title>Tech Stack｜Bloom &amp; City</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#c35e75;
+  --rose-dark:#a94660;
+  --ink:#49372f;
+  --muted:#82746d;
+  --blush:#fbefed;
+  --cream:#fffaf8;
+  --card:#ffffff;
+  --line:#e3b9c1;
+  --radius:18px;
+  --shadow:0 1px 2px rgba(73,55,47,.05),0 10px 30px rgba(169,70,96,.07);
+  --shadow-hover:0 2px 4px rgba(73,55,47,.06),0 16px 40px rgba(169,70,96,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 500px at 85% -10%,#fdf1f3 0%,transparent 60%),
+    var(--cream);
+  font-family:"Noto Serif TC",Georgia,serif;
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.page{max-width:1160px;margin:0 auto;padding:32px 20px 72px}
+
+.site-head{text-align:center;padding:36px 12px 8px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rose);background:var(--blush);
+  border:1px solid var(--line);border-radius:999px;padding:7px 16px;
+}
+.eyebrow::before,.eyebrow::after{content:"";width:14px;height:1px;background:var(--line)}
+h1{
+  font-family:"Cormorant Garamond","Noto Serif TC",serif;
+  font-weight:600;font-size:clamp(2.1rem,5vw,3.4rem);
+  margin:18px 0 6px;letter-spacing:.01em;
+}
+.lede{color:var(--muted);max-width:640px;margin:0 auto;font-size:clamp(.95rem,2.2vw,1.05rem)}
+.lede strong{color:var(--rose-dark);font-weight:600}
+
+.toc{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:26px 0 8px}
+.toc a{
+  text-decoration:none;font-size:.86rem;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);
+  padding:8px 16px;border-radius:999px;transition:.2s;
+}
+.toc a:hover,.toc a:focus-visible{background:var(--blush);border-color:var(--rose);color:var(--rose-dark)}
+
+section{margin-top:44px}
+.sec-title{
+  display:flex;align-items:baseline;gap:14px;margin:0 0 18px;
+  font-family:"Cormorant Garamond","Noto Serif TC",serif;
+  font-weight:600;font-size:clamp(1.4rem,3vw,1.9rem);
+}
+.sec-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sec-title .num{
+  font-size:.8rem;color:var(--rose);border:1px solid var(--line);
+  background:var(--blush);border-radius:999px;padding:3px 10px;font-family:inherit;
+}
+
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.grid.overview{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+.card{
+  background:var(--card);border:1px solid #f0d9de;border-radius:var(--radius);
+  padding:22px 22px 20px;box-shadow:var(--shadow);
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:var(--line)}
+.card h3{
+  margin:0 0 8px;font-size:1rem;font-weight:600;color:var(--rose-dark);
+  display:flex;align-items:center;gap:9px;
+}
+.card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--rose);flex:none}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}
+.card p strong,.card p code{color:var(--ink)}
+.card .value{display:block;font-size:1.02rem;color:var(--ink);margin-top:2px}
+.card .value.mono,code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em}
+code{
+  background:var(--blush);border:1px solid #f2dde1;color:var(--rose-dark);
+  padding:2px 7px;border-radius:7px;white-space:nowrap;
+}
+.tag{
+  display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--blush);color:var(--rose);border:1px solid var(--line);
+  border-radius:999px;padding:3px 10px;margin-bottom:10px;
+}
+
+.tree-card{grid-column:1/-1}
+pre.tree{
+  margin:0;overflow-x:auto;background:#fffaf6;border:1px solid #f2dde1;
+  border-radius:12px;padding:18px 20px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.83rem;line-height:1.75;color:var(--ink);
+}
+pre.tree .dir{color:var(--rose-dark);font-weight:600}
+pre.tree .cmt{color:var(--muted)}
+pre.tree .hl{color:var(--rose);font-weight:600}
+
+ul.checks{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:9px}
+ul.checks li{
+  position:relative;padding-left:26px;font-size:.92rem;color:var(--muted);
+}
+ul.checks li::before{
+  content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;
+  border:1.5px solid var(--rose);border-radius:5px;background:var(--blush);
+}
+ul.checks li::after{
+  content:"";position:absolute;left:4px;top:.72em;width:6px;height:3px;
+  border-left:1.6px solid var(--rose-dark);border-bottom:1.6px solid var(--rose-dark);
+  transform:rotate(-45deg);
+}
+
+.cmd{display:block;margin-top:10px;overflow-x:auto}
+.cmd code{display:inline-block;min-width:100%;padding:9px 12px;white-space:pre}
+
+.note{
+  grid-column:1/-1;display:flex;gap:14px;align-items:flex-start;
+  background:linear-gradient(135deg,#fdf3f4,#fbefed);
+  border:1px dashed var(--line);border-radius:var(--radius);
+  padding:18px 20px;font-size:.9rem;color:var(--ink);
+}
+.note .bang{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  background:var(--rose);color:#fff;display:grid;place-items:center;
+  font-weight:700;font-size:.9rem;font-family:inherit;
+}
+.note strong{color:var(--rose-dark)}
+
+.site-foot{
+  margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;
+  font-size:.82rem;color:var(--muted);
+}
+.site-foot a{color:var(--rose-dark);text-decoration:none;border-bottom:1px solid var(--line)}
+.site-foot a:hover{border-color:var(--rose)}
+
+@media (max-width:560px){
+  .page{padding:20px 14px 56px}
+  .card{padding:18px 16px}
+  .toc a{font-size:.8rem;padding:7px 13px}
+  .sec-title::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .card{transition:none}
+  .card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="site-head">
+    <span class="eyebrow">Bloom &amp; City · Repository</span>
+    <h1>Tech Stack</h1>
+    <p class="lede">Static, front-end-only recreation of the Hong Kong florist homepage in Traditional Chinese — <strong>no build step, no framework, no dependencies</strong>.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#structure">File Structure</a>
+      <a href="#frontend">Front-end</a>
+      <a href="#qa">Dev &amp; QA</a>
+      <a href="#limitations">Limitations</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="overview" aria-labelledby="t-overview">
+      <h2 class="sec-title" id="t-overview"><span class="num">01</span> Overview</h2>
+      <div class="grid overview">
+        <article class="card"><h3><span class="dot"></span>Type</h3><span class="value">Static single-page site</span><p>No build step, no bundler</p></article>
+        <article class="card"><h3><span class="dot"></span>Languages</h3><span class="value">HTML5 · CSS3 · Vanilla JS</span><p>ES2020+, browser only</p></article>
+        <article class="card"><h3><span class="dot"></span>Dependencies</h3><span class="value">None</span><p>No package.json, no npm packages, no framework</p></article>
+        <article class="card"><h3><span class="dot"></span>Runtime</h3><span class="value">Any static file server</span><p>Serve <code>public/</code> from any host</p></article>
+        <article class="card"><h3><span class="dot"></span>Locale</h3><span class="value">zh-Hant-HK</span><p>Traditional Chinese, Hong Kong</p></article>
+      </div>
+    </section>
+
+    <section id="structure" aria-labelledby="t-structure">
+      <h2 class="sec-title" id="t-structure"><span class="num">02</span> File Structure</h2>
+      <div class="grid">
+        <article class="card tree-card">
+          <span class="tag">Deploy this directory → public/</span>
+          <pre class="tree"><span class="hl">├── TODO.md</span>               <span class="cmt"># scope checklist and delivery evidence</span>
+<span class="hl">├── app.config.ts</span>         <span class="cmt"># Manus platform config (logoUrl; not used by the page)</span>
+<span class="hl">└── public/</span>               <span class="cmt"># entire site</span>
+    <span class="dir">├── index.html</span>        <span class="cmt"># single page, 6 sections (95 lines)</span>
+    <span class="dir">├── styles.css</span>        <span class="cmt"># all styling, responsive (1,408 lines)</span>
+    <span class="dir">├── app.js</span>            <span class="cmt"># all interactivity, zero imports (114 lines)</span>
+    <span class="dir">├── manus-routes.json</span> <span class="cmt"># Manus route manifest (one route: "/")</span>
+    <span class="dir">├── assets/</span>           <span class="cmt"># 12 WebP photos (occasions, budgets, promos, favicon)</span>
+    <span class="dir">└── manus-storage/</span>    <span class="cmt"># hero image (1920×823 WebP, local mirror)</span></pre>
+        </article>
+      </div>
+    </section>
+
+    <section id="frontend" aria-labelledby="t-frontend">
+      <h2 class="sec-title" id="t-frontend"><span class="num">03</span> Front-end Details</h2>
+      <div class="grid">
+
+        <article class="card">
+          <h3><span class="dot"></span>Styling</h3>
+          <ul class="checks">
+            <li>Hand-written CSS with custom properties (e.g. <code>--scale</code> for fluid hero sizing)</li>
+            <li>Media queries for desktop / tablet / mobile — verified at 1440px and 390px</li>
+            <li>Design tokens: blush pink, cream, muted rose, warm brown; rounded image cards</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Typography</h3>
+          <p>Google Fonts CDN:</p>
+          <ul class="checks">
+            <li><code>Cormorant Garamond</code> — Latin display</li>
+            <li><code>Noto Serif TC</code> — Traditional Chinese</li>
+            <li><code>LXGW WenKai TC</code> — Traditional Chinese</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Icons &amp; Imagery</h3>
+          <ul class="checks">
+            <li>Inline SVG sprite (<code>&lt;symbol&gt;</code> + <code>&lt;use&gt;</code>) — no icon library</li>
+            <li>Optimized WebP photography; hero uses <code>fetchpriority="high"</code></li>
+            <li><code>loading="lazy"</code> on all below-fold images</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Interactivity</h3>
+          <ul class="checks">
+            <li>Native <code>&lt;dialog&gt;</code> + <code>showModal()</code> for search, collections, info popups</li>
+            <li>Event delegation via <code>data-*</code> attributes</li>
+            <li>Client-side search over an in-file product array</li>
+            <li>Favorites in <code>localStorage</code> (<code>bloom-city-favorites</code>)</li>
+            <li>Hamburger nav + CSS dropdowns with <code>aria-expanded</code> state</li>
+            <li>Toast via <code>aria-live</code>; local-only newsletter feedback</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Platform Artifacts</h3>
+          <p><span class="tag">Manus</span></p>
+          <ul class="checks">
+            <li><code>manus-routes.json</code> — route manifest for the Manus preview host (one route: <code>/</code>)</li>
+            <li><code>app.config.ts</code> — platform config (logo URL); the page draws an inline flower mark instead</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="qa" aria-labelledby="t-qa">
+      <h2 class="sec-title" id="t-qa"><span class="num">04</span> Development &amp; QA</h2>
+      <div class="grid">
+
+        <article class="card">
+          <h3><span class="dot"></span>Serve locally</h3>
+          <p>Static server for <code>public/</code> (threaded — see note below).</p>
+          <span class="cmd"><code>python3 -m http.server 8000 --directory public</code></span>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>JS syntax check</h3>
+          <p>Parse-only validation, no linter config needed.</p>
+          <span class="cmd"><code>node --check public/app.js</code></span>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Asset / reference check</h3>
+          <p>HTTP-probe every local <code>src</code>, <code>href</code>, and CSS <code>url()</code> reference for 200s.</p>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Render audit</h3>
+          <p>Headless Chrome via CDP: broken images, console errors, horizontal overflow, font load.</p>
+        </article>
+
+        <article class="card">
+          <h3><span class="dot"></span>Screenshots</h3>
+          <p>Headless Chrome <code>Page.captureScreenshot</code> — full-page, dialogs, and mobile widths.</p>
+        </article>
+
+        <aside class="note">
+          <span class="bang" aria-hidden="true">!</span>
+          <div><strong>Local server note:</strong> the default single-threaded <code>http.server</code> intermittently drops concurrent requests (<code>ERR_SOCKET_NOT_CONNECTED</code>), breaking lazy-loaded images. Run a <code>ThreadingHTTPServer</code> instead.</div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section id="limitations" aria-labelledby="t-limitations">
+      <h2 class="sec-title" id="t-limitations"><span class="num">05</span> Known Limitations</h2>
+      <div class="grid">
+        <article class="card">
+          <h3><span class="dot"></span>Unconnected Actions</h3>
+          <ul class="checks">
+            <li>Contact details, WhatsApp number, and newsletter provider are not connected</li>
+            <li>All such actions are labeled demonstration-only in the UI</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3><span class="dot"></span>Front-end Only</h3>
+          <ul class="checks">
+            <li>Favorites, search, and subscription flows are front-end only</li>
+            <li>No orders are created — no checkout or payments, per scope</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <span>Bloom &amp; City · Repository documentation</span>
+    <span>Source: <a href="tech_stack.md">tech_stack.md</a> · Scope: <a href="TODO.md">TODO.md</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
